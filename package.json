@@ -1,0 +1,11 @@
+{
+  "name": "tower-demo-app",
+  "version": "0.0.1",
+  "description": "",
+  "dependencies": {
+    "tower": "*"
+  },
+  "bundledDependencies": [
+    "hello"
+  ]
+}
