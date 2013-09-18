@@ -4,6 +4,7 @@
 
 var tower = require('tower'),
     view = tower.view,
+    resource = tower.resource,
     server = tower.server,
     app = server(),
     get = server.get,
@@ -60,7 +61,13 @@ get('index', '/real')
     console.log(this.message);
 
     // Emit a new message to __all__ users connected:
-    server.publish('new user', {
+    // `on` and `emit` are used to direct messages
+    // from server -> server, or server->clients (read:
+    // multiple clients).
+    //
+    // `subscribe` and `publish` are used for hooking
+    // to individual users (i.e the currently connected user.)
+    server.emit('new user', {
       id: this.message.id,
       username: this.message.username
     });
@@ -70,6 +77,20 @@ get('index', '/real')
   // This will place the `real` view under the
   // `data-body` directive under the layout.
   this.render('real', 'home');
+});
+
+/**
+ * A global pub/sub that's not associated to a particular route.
+ */
+
+server.subscribe('message', function*(){
+  console.log(this.message);
+
+  // Store the message.
+  yield resource('message').insert(this.message);
+
+  // Let all the other users know about the new message.
+  server.emit('message', this.message);
 });
 
 // Listen to the appropriate port:
