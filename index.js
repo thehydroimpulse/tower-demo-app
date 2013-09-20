@@ -16,7 +16,6 @@ var tower = require('tower'),
 view.add('template', __dirname + '/views/templates');
 view.add('layout', __dirname + '/views/layouts');
 
-
 /**
  * GET /
  *
@@ -30,11 +29,14 @@ get('index', '/')
 .action(function *(){
   // Add a new scope property:
   this.scope.title = 'Hello World';
-
+  this.scope.users = [
+    { username: 'TheHydroImpulse' },
+    { username: 'Bob' }
+  ];
   // Render the `index` view, under the `home` layout.
   // This will place the `index` view under the
   // `data-body` directive under the layout.
-  this.render('index', 'home');
+  yield this.render('index', 'home');
 });
 
 
