@@ -30,8 +30,8 @@ get('index', '/')
   // Add a new scope property:
   this.scope.title = 'Hello World';
   this.scope.users = [
-    { username: 'TheHydroImpulse' },
-    { username: 'Bob' }
+    { username: 'TheHydroImpulse', id: 1 },
+    { username: 'Bob', id: 2 }
   ];
   // Render the `index` view, under the `home` layout.
   // This will place the `index` view under the
