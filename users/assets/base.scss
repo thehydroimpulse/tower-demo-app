@@ -1,0 +1,17 @@
+/**
+ * Variable Declaration
+ */
+
+$fontSize: 18px;
+$fontFamily: "Helvetica", "Arial", "sans-serif";
+$fontColour: #fff;
+
+/**
+ * Default Body Element
+ */
+
+body {
+  font-size: $fontSize;
+  font-family: $fontFamily;
+  background: $fontColour;
+}
