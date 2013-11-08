@@ -1,7 +1,8 @@
 {
   "assets": "assets",
   "modules": [
-    "users"
+    "users",
+    "posts"
   ],
   "environments": {
     "development": {
