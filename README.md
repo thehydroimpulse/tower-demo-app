@@ -1,9 +1,5 @@
 # Demo Tower.js Application
 
-This is just a demo of using the new Tower.js. It's still in development, and this is what I'm testing on while developing and working on Tower.
-
-I'm currently focusing on getting the server-side infrastructure up-and-running.
-
 ## Install
 
 First, install tower.js.
@@ -17,13 +13,37 @@ This will give you access to the `tower` binary.
 Clone this repo:
 
 ```bash
-git clone ...
+git clone git@github.com:TheHydroImpulse/tower-demo-app.git
 cd tower-demo-app
-npm install
-tower
+tower install
+tower # Run the tower server.
 ```
 
-Running `tower` with no arguments will invoke the server. Tower will then (hopefully) be running without any issues.
+## Production
+
+```bash
+# This will generate a nginx.conf for serving static files
+# And this will build the static files from each module into a simple bundle.
+tower build 
+```
+
+Run nginx:
+
+```bash
+sudo nginx -c nginx.conf
+```
+
+Run the production server:
+
+```bash
+tower server --production
+```
+
+Or with `NODE_ENV`
+
+```bash
+NODE_ENV=production tower
+```
 
 # License
 
