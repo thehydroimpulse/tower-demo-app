@@ -7,9 +7,9 @@
   ],
   "environments": {
     "development": {
-      "web_port": 5000,
-      "websocket_port": 6000,
-      "tcp_port": 7000
+      "webPort": 9090,
+      "websocketPort": 6000,
+      "tcpPort": 7000
     }
   }
 }
